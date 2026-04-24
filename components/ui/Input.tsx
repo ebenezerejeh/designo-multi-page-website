@@ -1,0 +1,34 @@
+import { forwardRef } from "react";
+import { cn } from "@/lib/utils";
+
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  error?: string;
+}
+
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className, error, ...props }, ref) => {
+    return (
+      <div className="relative w-full">
+        <input
+          ref={ref}
+          className={cn(
+            "w-full bg-transparent border-b border-white/50 pb-4 pl-4 pr-8 text-white placeholder:text-white/50 text-[15px] leading-[26px] outline-none focus:border-white transition-colors",
+            error && "border-peach focus:border-peach",
+            className
+          )}
+          {...props}
+        />
+        {error && (
+          <div className="absolute right-0 top-0 flex items-center gap-2 text-peach text-[12px] italic">
+            <span>{error}</span>
+            <span className="text-base">!</span>
+          </div>
+        )}
+      </div>
+    );
+  }
+);
+Input.displayName = "Input";
+
+export { Input };

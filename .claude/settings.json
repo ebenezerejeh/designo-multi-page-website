@@ -5,7 +5,9 @@
       "mcp__claude_ai_Figma__get_metadata",
       "Bash(yarn add *)",
       "Bash(yarn build *)",
-      "Bash(yarn lint *)"
+      "Bash(yarn lint *)",
+      "Read(//c/Users/Owner/.clone/projects/c--Users-Owner-Documents-backend-designo-multi-page-website/2cdf62b7-3011-4c6d-9411-e88f6eee4c9d/tool-results/**)",
+      "Bash(node -e ' *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Owner\\Documents\\backend\\designo-multi-page-website\\.claude"
