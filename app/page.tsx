@@ -1,7 +1,15 @@
+import { HeroSection } from "@/features/home/HeroSection";
+import { ServicesGrid } from "@/features/home/ServicesGrid";
+import { ValuesSection } from "@/features/home/ValuesSection";
+import { CTABanner } from "@/components/shared/CTABanner";
+
 export default function Home() {
   return (
-    <div className="flex items-center justify-center py-20">
-      <p className="text-dark-grey text-lg">Home page — coming in Phase 3</p>
-    </div>
+    <>
+      <HeroSection />
+      <ServicesGrid />
+      <ValuesSection />
+      <CTABanner />
+    </>
   );
 }

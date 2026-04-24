@@ -20,9 +20,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         {error && (
-          <div className="absolute right-0 top-0 flex items-center gap-2 text-peach text-[12px] italic">
+          <div className="absolute right-0 bottom-4 flex items-center gap-2 text-white text-[12px] italic">
             <span>{error}</span>
-            <span className="text-base">!</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/assets/contact/desktop/icon-error.svg" alt="" width={20} height={20} />
           </div>
         )}
       </div>
