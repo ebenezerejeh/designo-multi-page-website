@@ -3,6 +3,7 @@ import { Jost } from "next/font/google";
 import { Toaster } from "sonner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const jost = Jost({
@@ -23,9 +24,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${jost.variable} h-full`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-jost)] antialiased">
+      <body className="min-h-full flex flex-col font-jost antialiased">
         <Header />
-        <main className="flex-1">{children}</main>
+        <PageTransition>
+          <main className="flex-1">{children}</main>
+        </PageTransition>
         <Footer />
         <Toaster position="top-right" />
       </body>

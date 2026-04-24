@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { label: "Our Company", href: "/about" },
@@ -61,28 +61,34 @@ export function Header() {
       </div>
 
       {/* Mobile nav overlay */}
-      <div
-        className={cn(
-          "md:hidden absolute left-0 right-0 top-full bg-dark z-40 overflow-hidden transition-all duration-300",
-          menuOpen ? "max-h-screen py-10" : "max-h-0"
-        )}
-      >
-        <nav
-          className="flex flex-col gap-8 px-6"
-          aria-label="Mobile navigation"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-white text-[24px] uppercase tracking-[2px] hover:text-peach transition-colors"
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden absolute left-0 right-0 top-full bg-dark z-40 py-10"
+          >
+            <nav
+              className="flex flex-col gap-8 px-6"
+              aria-label="Mobile navigation"
             >
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-white text-[24px] uppercase tracking-[2px] hover:text-peach transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
