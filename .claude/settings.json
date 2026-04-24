@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(yarn create *)",
-      "mcp__claude_ai_Figma__get_metadata"
+      "mcp__claude_ai_Figma__get_metadata",
+      "Bash(yarn add *)",
+      "Bash(yarn build *)",
+      "Bash(yarn lint *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Owner\\Documents\\backend\\designo-multi-page-website\\.claude"
