@@ -2,6 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(yarn create *)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\Owner\\Documents\\backend\\designo-multi-page-website\\.claude"
     ]
   }
 }
