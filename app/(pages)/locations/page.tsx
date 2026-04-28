@@ -10,7 +10,8 @@ export default function LocationsPage() {
         address={["3886 Wellington Street", "Toronto, Ontario M9C 3J5"]}
         phone="P : +1 253-863-8967"
         email="M : contact@designo.co"
-        mapImage="/assets/locations/desktop/image-map-canada.png"
+        lat={43.6471}
+        lng={-79.5493}
       />
       <LocationEntry
         country="Australia"
@@ -18,7 +19,8 @@ export default function LocationsPage() {
         address={["19 Balonne Street", "New South Wales 2443"]}
         phone="P : (02) 6720 9092"
         email="M : contact@designo.au"
-        mapImage="/assets/locations/desktop/image-map-australia.png"
+        lat={-31.4618}
+        lng={152.7335}
         reversed
       />
       <LocationEntry
@@ -27,7 +29,8 @@ export default function LocationsPage() {
         address={["13  Colorado Way", "Rhyd-y-fro SA8 9GA"]}
         phone="P : 078 3115 1400"
         email="M : contact@designo.uk"
-        mapImage="/assets/locations/desktop/image-map-united-kingdom.png"
+        lat={51.7533}
+        lng={-3.8040}
       />
       <CTABanner />
     </div>

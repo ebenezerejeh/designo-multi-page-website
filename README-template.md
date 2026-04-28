@@ -55,6 +55,7 @@ Users should be able to:
 - [class-variance-authority](https://cva.style/docs) - Component variant management
 - [Lucide React](https://lucide.dev/) - Icons
 - [Sonner](https://sonner.emilkowal.ski/) - Toast notifications
+- [Leaflet](https://leafletjs.com/) / [React Leaflet](https://react-leaflet.js.org/) - Interactive maps on the Locations page
 
 ### What I learned
 
@@ -73,9 +74,11 @@ Wrapping all marketing pages inside an `(pages)` route group shares a common lay
 **5. class-variance-authority for multi-variant components**
 Using CVA to define Button variants (peach, dark, white) in a single schema keeps all visual states co-located and type-safe, so adding a new variant never requires hunting through multiple files.
 
+**6. Leaflet JS with Next.js App Router**
+Leaflet requires the browser's `window` object, so it cannot run during SSR. The fix is a two-layer approach: the actual map component is marked `"use client"`, and a separate client wrapper uses `next/dynamic` with `ssr: false`. This keeps the dynamic import boundary inside a Client Component, which Turbopack enforces strictly.
+
 ### Continued development
 
-- **Add interactive maps** — integrate Leaflet JS on the Locations page to show actual map pins for each office, fulfilling the bonus challenge requirement
 - **Animate page transitions** — refine the Framer Motion `AnimatePresence` setup to handle shared layout animations between the service category pages (Web, App, Graphic Design)
 - **Accessible form feedback** — improve the contact form's live region announcements so screen readers pick up validation errors as they appear
 - **Deploy to Vercel** — set up a production deployment with a custom domain and update the live site link

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { DynamicMap } from "./DynamicMap";
 
 interface Props {
   country: string;
@@ -6,7 +7,8 @@ interface Props {
   address: string[];
   phone: string;
   email: string;
-  mapImage: string;
+  lat: number;
+  lng: number;
   reversed?: boolean;
 }
 
@@ -16,25 +18,20 @@ export function LocationEntry({
   address,
   phone,
   email,
-  mapImage,
+  lat,
+  lng,
   reversed = false,
 }: Props) {
   return (
     <div className="mx-auto max-w-[1110px] px-6 lg:px-0">
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-[30px]">
-        {/* Map image — always first in DOM (top on mobile) */}
+        {/* Interactive map */}
         <div
           className={`relative h-[320px] lg:h-[326px] lg:w-[350px] flex-shrink-0 rounded-[15px] overflow-hidden ${
             reversed ? "" : "lg:order-last"
           }`}
         >
-          <Image
-            src={mapImage}
-            alt={`Map of ${country}`}
-            fill
-            sizes="(max-width: 1024px) 100vw, 350px"
-            className="object-cover"
-          />
+          <DynamicMap lat={lat} lng={lng} label={`Designo ${country} Office`} />
         </div>
 
         {/* Info card */}
@@ -50,6 +47,7 @@ export function LocationEntry({
               alt=""
               width={584}
               height={584}
+              style={{ height: "auto" }}
             />
           </div>
 
