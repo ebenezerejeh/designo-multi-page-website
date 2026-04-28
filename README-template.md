@@ -1,6 +1,6 @@
 # Frontend Mentor - Designo agency website solution
 
-This is a solution to the [Designo agency website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/designo-multipage-website-G48K6rfUT). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Designo agency website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/designo-multipage-website-G48K6rfUT). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -15,8 +15,6 @@ This is a solution to the [Designo agency website challenge on Frontend Mentor](
   - [Useful resources](#useful-resources)
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -33,83 +31,68 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repository](https://github.com/ebenezerejeh/designo-multi-page-website)
+- Live Site URL: [Live Site](https://designo-multi-page-website-puce.vercel.app/)
 
 ## My process
 
 ### Built with
 
 - Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [TypeScript](https://www.typescriptlang.org/) - Typed JavaScript
+- [React 19](https://reactjs.org/) - JS library
+- [Next.js 16](https://nextjs.org/) - React framework (App Router)
+- [Tailwind CSS v4](https://tailwindcss.com/) - Utility-first CSS
+- [Framer Motion](https://www.framer.com/motion/) - Animations and page transitions
+- [React Hook Form](https://react-hook-form.com/) - Form handling
+- [Zod](https://zod.dev/) - Schema validation
+- [shadcn/ui](https://ui.shadcn.com/) - UI component primitives
+- [class-variance-authority](https://cva.style/docs) - Component variant management
+- [Lucide React](https://lucide.dev/) - Icons
+- [Sonner](https://sonner.emilkowal.ski/) - Toast notifications
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+**1. Tailwind CSS v4 CSS-first configuration**
+Tailwind v4 drops `tailwind.config.js` entirely in favour of a CSS-first `@theme` block in `globals.css`. Defining design tokens (colours, fonts) directly in CSS and consuming them as Tailwind utilities (e.g. `bg-peach`, `text-dark-grey`) keeps the design system co-located with the styles rather than split across a config file.
 
-To see how you can add code snippets, see below:
+**2. Zod schema-first form validation with React Hook Form**
+Defining the Zod schema first and inferring TypeScript types from it ensures the form types and validation rules stay in sync with zero duplication. Pairing it with `@hookform/resolvers` wires up inline error messages automatically without any manual error state.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+**3. Framer Motion page transitions and scroll animations**
+Using `AnimatePresence` for page-level enter/exit transitions and `whileInView` variants for section animations gave the site a polished feel without complex scroll-listener logic. Keeping motion values in variant objects makes timing easy to adjust globally.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+**4. Next.js App Router route groups**
+Wrapping all marketing pages inside an `(pages)` route group shares a common layout (Navbar + Footer) without adding a URL segment, keeping URLs clean while avoiding layout duplication across six pages.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+**5. class-variance-authority for multi-variant components**
+Using CVA to define Button variants (peach, dark, white) in a single schema keeps all visual states co-located and type-safe, so adding a new variant never requires hunting through multiple files.
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+- **Add interactive maps** — integrate Leaflet JS on the Locations page to show actual map pins for each office, fulfilling the bonus challenge requirement
+- **Animate page transitions** — refine the Framer Motion `AnimatePresence` setup to handle shared layout animations between the service category pages (Web, App, Graphic Design)
+- **Accessible form feedback** — improve the contact form's live region announcements so screen readers pick up validation errors as they appear
+- **Deploy to Vercel** — set up a production deployment with a custom domain and update the live site link
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Tailwind CSS v4 docs — Theme variables](https://tailwindcss.com/docs/theme) - Essential reference for the new CSS-first `@theme` configuration that replaces `tailwind.config.js` in v4.
+- [React Hook Form + Zod integration](https://react-hook-form.com/get-started#SchemaValidation) - Guide for wiring Zod schemas to forms with `@hookform/resolvers` for schema-first validation.
+- [Framer Motion — AnimatePresence](https://www.framer.com/motion/animate-presence/) - Covers enter/exit animations for components that are removed from the React tree, used for page transitions.
+- [Next.js App Router docs](https://nextjs.org/docs/app) - Reference for route groups, Server Components, and the `"use client"` boundary used throughout the project.
+- [class-variance-authority docs](https://cva.style/docs) - Guide for building type-safe component variants, used for the Button component's peach/dark/white states.
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Frontend Mentor - [@ebenezerejeh](https://www.frontendmentor.io/profile/ebenezerejeh)
+- Twitter - [@ebenezer_onuche](https://www.twitter.com/ebenezer_onuche)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+I thank God for giving me the strength and wisdom to complete this challenge, and I thank the Frontend Mentor community for providing such a great platform to practice and improve my frontend skills.
